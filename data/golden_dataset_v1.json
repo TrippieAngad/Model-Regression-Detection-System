@@ -1,0 +1,537 @@
+{
+  "dataset_name": "customer_support_email_classifier_golden_v1",
+  "version": "v1",
+  "description": "Human-authored golden dataset for evaluating billing, technical, academics, and spam email classification.",
+  "schema": {
+    "id": "stable test case identifier",
+    "email": "input email text",
+    "expected": {
+      "category": "billing | technical | academics | spam",
+      "summary": "one sentence expected summary"
+    },
+    "difficulty": "easy | medium | hard",
+    "notes": "why the case matters"
+  },
+  "cases": [
+    {
+      "id": "billing_001",
+      "email": "I was charged twice for my monthly subscription yesterday. Can someone refund the duplicate payment?",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer was charged twice and wants a duplicate payment refunded."
+      },
+      "difficulty": "easy",
+      "notes": "Clear duplicate charge and refund request."
+    },
+    {
+      "id": "billing_002",
+      "email": "My invoice says I owe $49, but my plan is supposed to be $29. Why did the price change?",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer is questioning an invoice price increase from $29 to $49."
+      },
+      "difficulty": "easy",
+      "notes": "Invoice and pricing language signal billing."
+    },
+    {
+      "id": "billing_003",
+      "email": "Please cancel my subscription before it renews next week. I do not want another charge on my card.",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer wants to cancel before subscription renewal to avoid another charge."
+      },
+      "difficulty": "easy",
+      "notes": "Cancellation tied directly to renewal and card charge."
+    },
+    {
+      "id": "billing_004",
+      "email": "I updated my card but the payment still failed. Can you help me complete the transaction?",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer updated their card but payment is still failing."
+      },
+      "difficulty": "easy",
+      "notes": "Payment failure should classify as billing."
+    },
+    {
+      "id": "billing_005",
+      "email": "I never received a receipt for my annual plan purchase. Could you send me one for my records?",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer needs a receipt for an annual plan purchase."
+      },
+      "difficulty": "easy",
+      "notes": "Receipt request is billing."
+    },
+    {
+      "id": "billing_006",
+      "email": "The app is fine, but my bank shows a pending charge that I do not recognize from your company.",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer sees an unrecognized pending bank charge from the company."
+      },
+      "difficulty": "medium",
+      "notes": "Mentions app but issue is financial."
+    },
+    {
+      "id": "billing_007",
+      "email": "My free trial ended and I was billed even though I thought I cancelled. Can this be reversed?",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer was billed after a trial and wants the charge reversed."
+      },
+      "difficulty": "easy",
+      "notes": "Trial, billed, cancelled, reversed are billing signals."
+    },
+    {
+      "id": "billing_008",
+      "email": "Can you downgrade me to the basic plan? The premium plan is too expensive for me right now.",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer wants to downgrade from premium to basic because of cost."
+      },
+      "difficulty": "medium",
+      "notes": "Plan change with cost motive belongs to billing."
+    },
+    {
+      "id": "billing_009",
+      "email": "Your website keeps timing out when I try to pay my outstanding balance.",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer cannot pay an outstanding balance because the website times out."
+      },
+      "difficulty": "medium",
+      "notes": "Technical symptom but billing task is primary."
+    },
+    {
+      "id": "billing_010",
+      "email": "I need a copy of all invoices from January through March for accounting purposes.",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer needs invoice copies from January through March."
+      },
+      "difficulty": "easy",
+      "notes": "Invoice copies are billing."
+    },
+    {
+      "id": "billing_011",
+      "email": "Why was tax added to this month's bill when it was not included before?",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer is asking why tax was added to the current bill."
+      },
+      "difficulty": "easy",
+      "notes": "Taxes and bill changes are billing."
+    },
+    {
+      "id": "billing_012",
+      "email": "I paid last week but my account still says past due. Please check the payment status.",
+      "expected": {
+        "category": "billing",
+        "summary": "Customer paid but account still shows as past due."
+      },
+      "difficulty": "easy",
+      "notes": "Payment status issue."
+    },
+    {
+      "id": "technical_001",
+      "email": "The app crashes every time I open the dashboard after the latest update.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer reports the app crashes when opening the dashboard after an update."
+      },
+      "difficulty": "easy",
+      "notes": "Crash report is technical."
+    },
+    {
+      "id": "technical_002",
+      "email": "I keep getting a 500 error when I try to submit the form.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer gets a 500 error while submitting a form."
+      },
+      "difficulty": "easy",
+      "notes": "HTTP error is technical."
+    },
+    {
+      "id": "technical_003",
+      "email": "The reset password link opens a blank page on Safari but works on Chrome.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer says the password reset link opens a blank page on Safari."
+      },
+      "difficulty": "medium",
+      "notes": "Account-related flow, but browser bug is primary."
+    },
+    {
+      "id": "technical_004",
+      "email": "My uploaded PDF never finishes processing and stays stuck at 92 percent.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer's uploaded PDF processing is stuck at 92 percent."
+      },
+      "difficulty": "easy",
+      "notes": "Processing failure is technical."
+    },
+    {
+      "id": "technical_005",
+      "email": "The mobile app says I am offline even though my Wi-Fi is working for everything else.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer's mobile app incorrectly reports they are offline."
+      },
+      "difficulty": "easy",
+      "notes": "Connectivity/app state issue."
+    },
+    {
+      "id": "technical_006",
+      "email": "Search results are not loading, and the spinner just keeps going forever.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer says search results never load and the spinner continues indefinitely."
+      },
+      "difficulty": "easy",
+      "notes": "Loading issue."
+    },
+    {
+      "id": "technical_007",
+      "email": "I can log in, but none of my saved files appear in the workspace.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer can log in but saved files are missing from the workspace."
+      },
+      "difficulty": "medium",
+      "notes": "Could look like account issue, but data display/sync is technical."
+    },
+    {
+      "id": "technical_008",
+      "email": "Your API returns invalid JSON when I call the reports endpoint with a date range.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer reports invalid JSON from the reports API endpoint."
+      },
+      "difficulty": "easy",
+      "notes": "API response bug."
+    },
+    {
+      "id": "technical_009",
+      "email": "Notifications stopped showing up on my phone after I changed my settings.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer stopped receiving phone notifications after changing settings."
+      },
+      "difficulty": "medium",
+      "notes": "Settings could be account, but notification failure is technical."
+    },
+    {
+      "id": "technical_010",
+      "email": "The video lecture freezes halfway through and then audio keeps playing without the image.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer says video freezes while audio continues playing."
+      },
+      "difficulty": "easy",
+      "notes": "Media playback issue."
+    },
+    {
+      "id": "technical_011",
+      "email": "I tried three browsers and clearing cache, but the assignment upload button still does nothing.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer cannot use the assignment upload button despite browser troubleshooting."
+      },
+      "difficulty": "medium",
+      "notes": "Mentions assignment but issue is upload button failure."
+    },
+    {
+      "id": "technical_012",
+      "email": "The page layout is broken on my iPad, and the submit button is covered by the sidebar.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer reports broken iPad layout with the submit button covered."
+      },
+      "difficulty": "easy",
+      "notes": "UI layout bug."
+    },
+    {
+      "id": "academics_001",
+      "email": "When is the deadline to submit the midterm project for CS 2100?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks for the CS 2100 midterm project submission deadline."
+      },
+      "difficulty": "easy",
+      "notes": "Course deadline request."
+    },
+    {
+      "id": "academics_002",
+      "email": "Can I still add a discussion section for my calculus class after the enrollment deadline?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks whether they can add a calculus discussion section after the enrollment deadline."
+      },
+      "difficulty": "easy",
+      "notes": "Enrollment/course logistics."
+    },
+    {
+      "id": "academics_003",
+      "email": "I need help understanding how office hours work for my statistics professor.",
+      "expected": {
+        "category": "academics",
+        "summary": "Student needs help understanding office hours for a statistics professor."
+      },
+      "difficulty": "easy",
+      "notes": "Academic support."
+    },
+    {
+      "id": "academics_004",
+      "email": "My grade for the last quiz looks wrong. Who should I contact about a regrade?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student believes a quiz grade is wrong and asks about regrade contact."
+      },
+      "difficulty": "easy",
+      "notes": "Grade/regrade issue."
+    },
+    {
+      "id": "academics_005",
+      "email": "Is linear algebra required before I take the machine learning elective?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks whether linear algebra is required before a machine learning elective."
+      },
+      "difficulty": "easy",
+      "notes": "Prerequisite question."
+    },
+    {
+      "id": "academics_006",
+      "email": "I missed lab because I was sick. Is there a makeup policy for chemistry lab?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks about a makeup policy after missing chemistry lab due to illness."
+      },
+      "difficulty": "easy",
+      "notes": "Course absence/makeup policy."
+    },
+    {
+      "id": "academics_007",
+      "email": "The assignment page will not load, but I mainly need to know what reading is due tomorrow.",
+      "expected": {
+        "category": "academics",
+        "summary": "Student needs to know the reading due tomorrow despite the assignment page not loading."
+      },
+      "difficulty": "hard",
+      "notes": "Contains technical symptom, but student's intent is academic information."
+    },
+    {
+      "id": "academics_008",
+      "email": "Can you explain the difference between a major requirement and a general education requirement?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks about the difference between major and general education requirements."
+      },
+      "difficulty": "easy",
+      "notes": "Academic advising topic."
+    },
+    {
+      "id": "academics_009",
+      "email": "I want to switch from pass/fail back to graded for my economics course. Is that allowed?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks whether they can switch an economics course from pass/fail to graded."
+      },
+      "difficulty": "easy",
+      "notes": "Course grading option."
+    },
+    {
+      "id": "academics_010",
+      "email": "Where can I find tutoring for data structures before next week's exam?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks where to find data structures tutoring before an exam."
+      },
+      "difficulty": "easy",
+      "notes": "Tutoring and exam preparation."
+    },
+    {
+      "id": "academics_011",
+      "email": "The professor said the syllabus changed, but I cannot tell which readings were removed.",
+      "expected": {
+        "category": "academics",
+        "summary": "Student is asking which readings were removed after a syllabus change."
+      },
+      "difficulty": "medium",
+      "notes": "Syllabus/readings are academic."
+    },
+    {
+      "id": "academics_012",
+      "email": "Can first-year students register for the advanced AI seminar, or is it only for upperclassmen?",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks if first-year students can register for an advanced AI seminar."
+      },
+      "difficulty": "easy",
+      "notes": "Registration eligibility."
+    },
+    {
+      "id": "academics_013",
+      "email": "I need an extension on my paper because my laptop crashed the night before it was due.",
+      "expected": {
+        "category": "academics",
+        "summary": "Student requests a paper extension after their laptop crashed."
+      },
+      "difficulty": "hard",
+      "notes": "Technical event, but request is academic extension."
+    },
+    {
+      "id": "spam_001",
+      "email": "Congratulations! You have won a free iPhone. Click this link now to claim your prize.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message claims the recipient won a free iPhone and asks them to click a link."
+      },
+      "difficulty": "easy",
+      "notes": "Classic prize spam."
+    },
+    {
+      "id": "spam_002",
+      "email": "URGENT: Your account will be deleted in 1 hour unless you verify your password at this link.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message threatens account deletion and asks for password verification through a link."
+      },
+      "difficulty": "easy",
+      "notes": "Phishing pattern."
+    },
+    {
+      "id": "spam_003",
+      "email": "Make $5,000 per week from home with no experience. Reply with your banking details to start.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message promises high work-from-home income and requests banking details."
+      },
+      "difficulty": "easy",
+      "notes": "Scam and sensitive info request."
+    },
+    {
+      "id": "spam_004",
+      "email": "Dear user, your mailbox storage is full. Login through this unknown link to increase quota.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message claims mailbox storage is full and asks user to log in through an unknown link."
+      },
+      "difficulty": "medium",
+      "notes": "Could resemble technical/account support but suspicious link and generic language indicate spam."
+    },
+    {
+      "id": "spam_005",
+      "email": "Limited time crypto investment opportunity. Guaranteed 300 percent return by Friday.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message advertises a guaranteed high-return crypto investment opportunity."
+      },
+      "difficulty": "easy",
+      "notes": "Investment scam."
+    },
+    {
+      "id": "spam_006",
+      "email": "Your professor shared secret exam answers here: http://totally-real-notes.example.ru",
+      "expected": {
+        "category": "spam",
+        "summary": "Message advertises supposed secret exam answers through a suspicious link."
+      },
+      "difficulty": "medium",
+      "notes": "Academic vocabulary, but suspicious link and exam answers indicate spam."
+    },
+    {
+      "id": "spam_007",
+      "email": "We noticed unusual activity. Send your username, password, and two-factor code so we can protect you.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message asks for username, password, and two-factor code under a security pretext."
+      },
+      "difficulty": "easy",
+      "notes": "Credential theft."
+    },
+    {
+      "id": "spam_008",
+      "email": "Act now! Your unpaid bill can be erased if you buy gift cards and send us the codes.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message claims an unpaid bill can be erased by sending gift card codes."
+      },
+      "difficulty": "medium",
+      "notes": "Billing words but gift card demand makes it spam."
+    },
+    {
+      "id": "spam_009",
+      "email": "You were selected for a scholarship you did not apply for. Pay a $25 processing fee to receive it.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message claims an unsolicited scholarship requires a processing fee."
+      },
+      "difficulty": "medium",
+      "notes": "Academic-looking scholarship scam."
+    },
+    {
+      "id": "spam_010",
+      "email": "Hello friend, I am a foreign prince and need your help transferring funds urgently.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message uses a foreign prince story to request help transferring funds."
+      },
+      "difficulty": "easy",
+      "notes": "Classic advance-fee scam."
+    },
+    {
+      "id": "spam_011",
+      "email": "Your package delivery failed. Download this attachment to reschedule immediately.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message claims package delivery failed and asks user to download an attachment."
+      },
+      "difficulty": "medium",
+      "notes": "Suspicious attachment request."
+    },
+    {
+      "id": "spam_012",
+      "email": "FINAL NOTICE: Click here to avoid legal action for a debt we cannot identify in this message.",
+      "expected": {
+        "category": "spam",
+        "summary": "Message threatens legal action for an unspecified debt and asks the user to click a link."
+      },
+      "difficulty": "medium",
+      "notes": "Threatening generic debt message."
+    },
+    {
+      "id": "edge_001",
+      "email": "I cannot access the course site, and I need to submit my homework before midnight.",
+      "expected": {
+        "category": "technical",
+        "summary": "Student cannot access the course site needed to submit homework before midnight."
+      },
+      "difficulty": "hard",
+      "notes": "Academic context, but access failure is the primary support need."
+    },
+    {
+      "id": "edge_002",
+      "email": "The billing portal gives an error whenever I try to download my invoice.",
+      "expected": {
+        "category": "technical",
+        "summary": "Customer gets an error when downloading an invoice from the billing portal."
+      },
+      "difficulty": "hard",
+      "notes": "Billing object, but portal error is a technical failure."
+    },
+    {
+      "id": "edge_003",
+      "email": "I need to know if there is a fee for dropping a class after the deadline.",
+      "expected": {
+        "category": "academics",
+        "summary": "Student asks if there is a fee for dropping a class after the deadline."
+      },
+      "difficulty": "hard",
+      "notes": "Mentions fee, but the core question is academic enrollment policy."
+    }
+  ]
+}

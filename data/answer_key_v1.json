@@ -1,0 +1,262 @@
+[
+  {
+    "id": "billing_001",
+    "category": "billing",
+    "summary": "Customer was charged twice and wants a duplicate payment refunded."
+  },
+  {
+    "id": "billing_002",
+    "category": "billing",
+    "summary": "Customer is questioning an invoice price increase from $29 to $49."
+  },
+  {
+    "id": "billing_003",
+    "category": "billing",
+    "summary": "Customer wants to cancel before subscription renewal to avoid another charge."
+  },
+  {
+    "id": "billing_004",
+    "category": "billing",
+    "summary": "Customer updated their card but payment is still failing."
+  },
+  {
+    "id": "billing_005",
+    "category": "billing",
+    "summary": "Customer needs a receipt for an annual plan purchase."
+  },
+  {
+    "id": "billing_006",
+    "category": "billing",
+    "summary": "Customer sees an unrecognized pending bank charge from the company."
+  },
+  {
+    "id": "billing_007",
+    "category": "billing",
+    "summary": "Customer was billed after a trial and wants the charge reversed."
+  },
+  {
+    "id": "billing_008",
+    "category": "billing",
+    "summary": "Customer wants to downgrade from premium to basic because of cost."
+  },
+  {
+    "id": "billing_009",
+    "category": "billing",
+    "summary": "Customer cannot pay an outstanding balance because the website times out."
+  },
+  {
+    "id": "billing_010",
+    "category": "billing",
+    "summary": "Customer needs invoice copies from January through March."
+  },
+  {
+    "id": "billing_011",
+    "category": "billing",
+    "summary": "Customer is asking why tax was added to the current bill."
+  },
+  {
+    "id": "billing_012",
+    "category": "billing",
+    "summary": "Customer paid but account still shows as past due."
+  },
+  {
+    "id": "technical_001",
+    "category": "technical",
+    "summary": "Customer reports the app crashes when opening the dashboard after an update."
+  },
+  {
+    "id": "technical_002",
+    "category": "technical",
+    "summary": "Customer gets a 500 error while submitting a form."
+  },
+  {
+    "id": "technical_003",
+    "category": "technical",
+    "summary": "Customer says the password reset link opens a blank page on Safari."
+  },
+  {
+    "id": "technical_004",
+    "category": "technical",
+    "summary": "Customer's uploaded PDF processing is stuck at 92 percent."
+  },
+  {
+    "id": "technical_005",
+    "category": "technical",
+    "summary": "Customer's mobile app incorrectly reports they are offline."
+  },
+  {
+    "id": "technical_006",
+    "category": "technical",
+    "summary": "Customer says search results never load and the spinner continues indefinitely."
+  },
+  {
+    "id": "technical_007",
+    "category": "technical",
+    "summary": "Customer can log in but saved files are missing from the workspace."
+  },
+  {
+    "id": "technical_008",
+    "category": "technical",
+    "summary": "Customer reports invalid JSON from the reports API endpoint."
+  },
+  {
+    "id": "technical_009",
+    "category": "technical",
+    "summary": "Customer stopped receiving phone notifications after changing settings."
+  },
+  {
+    "id": "technical_010",
+    "category": "technical",
+    "summary": "Customer says video freezes while audio continues playing."
+  },
+  {
+    "id": "technical_011",
+    "category": "technical",
+    "summary": "Customer cannot use the assignment upload button despite browser troubleshooting."
+  },
+  {
+    "id": "technical_012",
+    "category": "technical",
+    "summary": "Customer reports broken iPad layout with the submit button covered."
+  },
+  {
+    "id": "academics_001",
+    "category": "academics",
+    "summary": "Student asks for the CS 2100 midterm project submission deadline."
+  },
+  {
+    "id": "academics_002",
+    "category": "academics",
+    "summary": "Student asks whether they can add a calculus discussion section after the enrollment deadline."
+  },
+  {
+    "id": "academics_003",
+    "category": "academics",
+    "summary": "Student needs help understanding office hours for a statistics professor."
+  },
+  {
+    "id": "academics_004",
+    "category": "academics",
+    "summary": "Student believes a quiz grade is wrong and asks about regrade contact."
+  },
+  {
+    "id": "academics_005",
+    "category": "academics",
+    "summary": "Student asks whether linear algebra is required before a machine learning elective."
+  },
+  {
+    "id": "academics_006",
+    "category": "academics",
+    "summary": "Student asks about a makeup policy after missing chemistry lab due to illness."
+  },
+  {
+    "id": "academics_007",
+    "category": "academics",
+    "summary": "Student needs to know the reading due tomorrow despite the assignment page not loading."
+  },
+  {
+    "id": "academics_008",
+    "category": "academics",
+    "summary": "Student asks about the difference between major and general education requirements."
+  },
+  {
+    "id": "academics_009",
+    "category": "academics",
+    "summary": "Student asks whether they can switch an economics course from pass/fail to graded."
+  },
+  {
+    "id": "academics_010",
+    "category": "academics",
+    "summary": "Student asks where to find data structures tutoring before an exam."
+  },
+  {
+    "id": "academics_011",
+    "category": "academics",
+    "summary": "Student is asking which readings were removed after a syllabus change."
+  },
+  {
+    "id": "academics_012",
+    "category": "academics",
+    "summary": "Student asks if first-year students can register for an advanced AI seminar."
+  },
+  {
+    "id": "academics_013",
+    "category": "academics",
+    "summary": "Student requests a paper extension after their laptop crashed."
+  },
+  {
+    "id": "spam_001",
+    "category": "spam",
+    "summary": "Message claims the recipient won a free iPhone and asks them to click a link."
+  },
+  {
+    "id": "spam_002",
+    "category": "spam",
+    "summary": "Message threatens account deletion and asks for password verification through a link."
+  },
+  {
+    "id": "spam_003",
+    "category": "spam",
+    "summary": "Message promises high work-from-home income and requests banking details."
+  },
+  {
+    "id": "spam_004",
+    "category": "spam",
+    "summary": "Message claims mailbox storage is full and asks user to log in through an unknown link."
+  },
+  {
+    "id": "spam_005",
+    "category": "spam",
+    "summary": "Message advertises a guaranteed high-return crypto investment opportunity."
+  },
+  {
+    "id": "spam_006",
+    "category": "spam",
+    "summary": "Message advertises supposed secret exam answers through a suspicious link."
+  },
+  {
+    "id": "spam_007",
+    "category": "spam",
+    "summary": "Message asks for username, password, and two-factor code under a security pretext."
+  },
+  {
+    "id": "spam_008",
+    "category": "spam",
+    "summary": "Message claims an unpaid bill can be erased by sending gift card codes."
+  },
+  {
+    "id": "spam_009",
+    "category": "spam",
+    "summary": "Message claims an unsolicited scholarship requires a processing fee."
+  },
+  {
+    "id": "spam_010",
+    "category": "spam",
+    "summary": "Message uses a foreign prince story to request help transferring funds."
+  },
+  {
+    "id": "spam_011",
+    "category": "spam",
+    "summary": "Message claims package delivery failed and asks user to download an attachment."
+  },
+  {
+    "id": "spam_012",
+    "category": "spam",
+    "summary": "Message threatens legal action for an unspecified debt and asks the user to click a link."
+  },
+  {
+    "id": "edge_001",
+    "category": "technical",
+    "summary": "Student cannot access the course site needed to submit homework before midnight."
+  },
+  {
+    "id": "edge_002",
+    "category": "technical",
+    "summary": "Customer gets an error when downloading an invoice from the billing portal."
+  },
+  {
+    "id": "edge_003",
+    "category": "academics",
+    "summary": "Student asks if there is a fee for dropping a class after the deadline."
+  }
+]

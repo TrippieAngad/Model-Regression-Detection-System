@@ -1,0 +1,210 @@
+[
+  {
+    "id": "billing_001",
+    "email": "I was charged twice for my monthly subscription yesterday. Can someone refund the duplicate payment?"
+  },
+  {
+    "id": "billing_002",
+    "email": "My invoice says I owe $49, but my plan is supposed to be $29. Why did the price change?"
+  },
+  {
+    "id": "billing_003",
+    "email": "Please cancel my subscription before it renews next week. I do not want another charge on my card."
+  },
+  {
+    "id": "billing_004",
+    "email": "I updated my card but the payment still failed. Can you help me complete the transaction?"
+  },
+  {
+    "id": "billing_005",
+    "email": "I never received a receipt for my annual plan purchase. Could you send me one for my records?"
+  },
+  {
+    "id": "billing_006",
+    "email": "The app is fine, but my bank shows a pending charge that I do not recognize from your company."
+  },
+  {
+    "id": "billing_007",
+    "email": "My free trial ended and I was billed even though I thought I cancelled. Can this be reversed?"
+  },
+  {
+    "id": "billing_008",
+    "email": "Can you downgrade me to the basic plan? The premium plan is too expensive for me right now."
+  },
+  {
+    "id": "billing_009",
+    "email": "Your website keeps timing out when I try to pay my outstanding balance."
+  },
+  {
+    "id": "billing_010",
+    "email": "I need a copy of all invoices from January through March for accounting purposes."
+  },
+  {
+    "id": "billing_011",
+    "email": "Why was tax added to this month's bill when it was not included before?"
+  },
+  {
+    "id": "billing_012",
+    "email": "I paid last week but my account still says past due. Please check the payment status."
+  },
+  {
+    "id": "technical_001",
+    "email": "The app crashes every time I open the dashboard after the latest update."
+  },
+  {
+    "id": "technical_002",
+    "email": "I keep getting a 500 error when I try to submit the form."
+  },
+  {
+    "id": "technical_003",
+    "email": "The reset password link opens a blank page on Safari but works on Chrome."
+  },
+  {
+    "id": "technical_004",
+    "email": "My uploaded PDF never finishes processing and stays stuck at 92 percent."
+  },
+  {
+    "id": "technical_005",
+    "email": "The mobile app says I am offline even though my Wi-Fi is working for everything else."
+  },
+  {
+    "id": "technical_006",
+    "email": "Search results are not loading, and the spinner just keeps going forever."
+  },
+  {
+    "id": "technical_007",
+    "email": "I can log in, but none of my saved files appear in the workspace."
+  },
+  {
+    "id": "technical_008",
+    "email": "Your API returns invalid JSON when I call the reports endpoint with a date range."
+  },
+  {
+    "id": "technical_009",
+    "email": "Notifications stopped showing up on my phone after I changed my settings."
+  },
+  {
+    "id": "technical_010",
+    "email": "The video lecture freezes halfway through and then audio keeps playing without the image."
+  },
+  {
+    "id": "technical_011",
+    "email": "I tried three browsers and clearing cache, but the assignment upload button still does nothing."
+  },
+  {
+    "id": "technical_012",
+    "email": "The page layout is broken on my iPad, and the submit button is covered by the sidebar."
+  },
+  {
+    "id": "academics_001",
+    "email": "When is the deadline to submit the midterm project for CS 2100?"
+  },
+  {
+    "id": "academics_002",
+    "email": "Can I still add a discussion section for my calculus class after the enrollment deadline?"
+  },
+  {
+    "id": "academics_003",
+    "email": "I need help understanding how office hours work for my statistics professor."
+  },
+  {
+    "id": "academics_004",
+    "email": "My grade for the last quiz looks wrong. Who should I contact about a regrade?"
+  },
+  {
+    "id": "academics_005",
+    "email": "Is linear algebra required before I take the machine learning elective?"
+  },
+  {
+    "id": "academics_006",
+    "email": "I missed lab because I was sick. Is there a makeup policy for chemistry lab?"
+  },
+  {
+    "id": "academics_007",
+    "email": "The assignment page will not load, but I mainly need to know what reading is due tomorrow."
+  },
+  {
+    "id": "academics_008",
+    "email": "Can you explain the difference between a major requirement and a general education requirement?"
+  },
+  {
+    "id": "academics_009",
+    "email": "I want to switch from pass/fail back to graded for my economics course. Is that allowed?"
+  },
+  {
+    "id": "academics_010",
+    "email": "Where can I find tutoring for data structures before next week's exam?"
+  },
+  {
+    "id": "academics_011",
+    "email": "The professor said the syllabus changed, but I cannot tell which readings were removed."
+  },
+  {
+    "id": "academics_012",
+    "email": "Can first-year students register for the advanced AI seminar, or is it only for upperclassmen?"
+  },
+  {
+    "id": "academics_013",
+    "email": "I need an extension on my paper because my laptop crashed the night before it was due."
+  },
+  {
+    "id": "spam_001",
+    "email": "Congratulations! You have won a free iPhone. Click this link now to claim your prize."
+  },
+  {
+    "id": "spam_002",
+    "email": "URGENT: Your account will be deleted in 1 hour unless you verify your password at this link."
+  },
+  {
+    "id": "spam_003",
+    "email": "Make $5,000 per week from home with no experience. Reply with your banking details to start."
+  },
+  {
+    "id": "spam_004",
+    "email": "Dear user, your mailbox storage is full. Login through this unknown link to increase quota."
+  },
+  {
+    "id": "spam_005",
+    "email": "Limited time crypto investment opportunity. Guaranteed 300 percent return by Friday."
+  },
+  {
+    "id": "spam_006",
+    "email": "Your professor shared secret exam answers here: http://totally-real-notes.example.ru"
+  },
+  {
+    "id": "spam_007",
+    "email": "We noticed unusual activity. Send your username, password, and two-factor code so we can protect you."
+  },
+  {
+    "id": "spam_008",
+    "email": "Act now! Your unpaid bill can be erased if you buy gift cards and send us the codes."
+  },
+  {
+    "id": "spam_009",
+    "email": "You were selected for a scholarship you did not apply for. Pay a $25 processing fee to receive it."
+  },
+  {
+    "id": "spam_010",
+    "email": "Hello friend, I am a foreign prince and need your help transferring funds urgently."
+  },
+  {
+    "id": "spam_011",
+    "email": "Your package delivery failed. Download this attachment to reschedule immediately."
+  },
+  {
+    "id": "spam_012",
+    "email": "FINAL NOTICE: Click here to avoid legal action for a debt we cannot identify in this message."
+  },
+  {
+    "id": "edge_001",
+    "email": "I cannot access the course site, and I need to submit my homework before midnight."
+  },
+  {
+    "id": "edge_002",
+    "email": "The billing portal gives an error whenever I try to download my invoice."
+  },
+  {
+    "id": "edge_003",
+    "email": "I need to know if there is a fee for dropping a class after the deadline."
+  }
+]

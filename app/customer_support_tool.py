@@ -31,6 +31,8 @@ def email_classifier(email:str)-> json:
     email_c = EmailClassification.model_validate(json_data)
     return email_c.model_dump()
 
-print(email_classifier("I was charged twice for my subscription."))
+
+if __name__ == "__main__":
+    print(email_classifier("I was charged twice for my subscription."))
 
 
