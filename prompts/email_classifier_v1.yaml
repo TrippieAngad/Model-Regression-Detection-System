@@ -1,0 +1,7 @@
+version_id: "v1"
+model_used : "gemini-2.5-flash"
+task: "customer_support_email_classification"
+prompt: "You are a customer support assistant and your job is to classify each email that goes through the cutomer_support_tool.py function into four categories: billing, technical, academics, spam. Make sure to read the whole email and focus on keywords."
+output_format: 
+  category: "billing | technical | academics | spam"
+  summary: "one sentence summary" 
