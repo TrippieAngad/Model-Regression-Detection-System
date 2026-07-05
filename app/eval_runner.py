@@ -6,9 +6,42 @@ from customer_support_tool import email_classifier
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEST_CASES = BASE_DIR / "data" / "test_cases_v1.json"
 ANSWERS = BASE_DIR / "data" / "answer_key_v1.json"
-MAX_CASES = 10
+MAX_CASES = 1
 
-def evaluation(max_cases=MAX_CASES):
+# Set this to a previous/baseline run accuracy when you want regression checks.
+BASELINE_ACCURACY = .05
+WARNING_DROP_THRESHOLD = 0.03
+CRITICAL_DROP_THRESHOLD = 0.08
+
+
+def classify_regression(current_accuracy, baseline_accuracy):
+    if baseline_accuracy is None:
+        return {
+            "status": "no_baseline",
+            "accuracy_delta": None,
+            "message": "No baseline accuracy configured yet."
+        }
+
+    accuracy_delta = baseline_accuracy - current_accuracy
+
+    if accuracy_delta >= CRITICAL_DROP_THRESHOLD:
+        status = "critical"
+    elif accuracy_delta >= WARNING_DROP_THRESHOLD:
+        status = "warning"
+    else:
+        status = "pass"
+
+    return {
+        "status": status,
+        "accuracy_delta": accuracy_delta,
+        "baseline_accuracy": baseline_accuracy,
+        "current_accuracy": current_accuracy,
+        "warning_threshold": WARNING_DROP_THRESHOLD,
+        "critical_threshold": CRITICAL_DROP_THRESHOLD,
+    }
+
+
+def evaluation(max_cases=MAX_CASES, baseline_accuracy=BASELINE_ACCURACY):
     with open(TEST_CASES, "r", encoding="utf-8") as tests, open(ANSWERS, "r", encoding="utf-8") as answer_key:
         test_cases = json.load(tests)
         answers = json.load(answer_key)
@@ -18,6 +51,7 @@ def evaluation(max_cases=MAX_CASES):
 
     num_correct = 0
     num_run = 0
+    failures = []
 
     for test_case in test_cases:
         test_id = test_case["id"]
@@ -34,12 +68,37 @@ def evaluation(max_cases=MAX_CASES):
 
         if gemini_prediction["category"] == correct_classification["category"]:
             num_correct += 1
+        else:
+            failures.append({
+                "id": test_id,
+                "expected": correct_classification["category"],
+                "predicted": gemini_prediction["category"],
+            })
 
-    if num_run == 0:
-        return 0
+    accuracy = num_correct / num_run if num_run else 0
+    regression = classify_regression(accuracy, baseline_accuracy)
 
-    return num_correct / num_run
+    return {
+        "status": regression["status"],
+        "accuracy": accuracy,
+        "accuracy_percent": f"{accuracy * 100:.2f}%",
+        "num_correct": num_correct,
+        "num_run": num_run,
+        "num_requested": len(test_cases),
+        "regression": regression,
+        "failures": failures,
+    }
 
+def write_result_to_file(payload:json):
+    if(not payload):
+        return "nothing to write"
 
+    results_path = BASE_DIR / "data" / "json_for_results001.json"
+    with open(results_path,"w") as file:
+        json.dump(payload,file,indent=2)
+        
+    return results_path
 if __name__ == "__main__":
-    print(evaluation(MAX_CASES))
+    result = evaluation(MAX_CASES, BASELINE_ACCURACY)
+    write_result_to_file(result)    
+

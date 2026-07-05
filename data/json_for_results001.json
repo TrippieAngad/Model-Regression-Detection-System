@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "accuracy": 1.0,
+  "accuracy_percent": "100.00%",
+  "num_correct": 1,
+  "num_run": 1,
+  "num_requested": 1,
+  "regression": {
+    "status": "pass",
+    "accuracy_delta": -0.95,
+    "baseline_accuracy": 0.05,
+    "current_accuracy": 1.0,
+    "warning_threshold": 0.03,
+    "critical_threshold": 0.08
+  },
+  "failures": []
+}
