@@ -119,6 +119,8 @@ def write_result_to_file(payload):
     return {"saved": True, "path": str(results_path)}
 
 
+
+
 if __name__ == "__main__":
     previous_run = load_latest_run(RUNS_DIR)
     result = evaluation(MAX_CASES, BASELINE_ACCURACY)
@@ -142,6 +144,10 @@ if __name__ == "__main__":
     result["report"] = report_result
     s3_result = upload_result_to_s3(result)
     alert_result = send_slack_alert(result)
+    
+    if os.getenv("FAIL_ON_CRITICAL").lower() == "true" and result["status"] == "critical":
+        raise SystemExit(1)
+
     print(json.dumps({
         "evaluation": result,
         "local_result": local_result,
