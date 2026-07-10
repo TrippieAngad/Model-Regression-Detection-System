@@ -2,14 +2,17 @@ import json
 from pathlib import Path
 
 from customer_support_tool import email_classifier
+from run_history import compare_runs, load_latest_run, save_timestamped_run
+from s3_storage import upload_result_to_s3
+from slack_alerts import send_slack_alert
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEST_CASES = BASE_DIR / "data" / "test_cases_v1.json"
 ANSWERS = BASE_DIR / "data" / "answer_key_v1.json"
-MAX_CASES = 1
+RUNS_DIR = BASE_DIR / "runs"
+MAX_CASES = 52
 
-# Set this to a previous/baseline run accuracy when you want regression checks.
-BASELINE_ACCURACY = .05
+BASELINE_ACCURACY = None
 WARNING_DROP_THRESHOLD = 0.03
 CRITICAL_DROP_THRESHOLD = 0.08
 
@@ -52,6 +55,7 @@ def evaluation(max_cases=MAX_CASES, baseline_accuracy=BASELINE_ACCURACY):
     num_correct = 0
     num_run = 0
     failures = []
+    case_results = []
 
     for test_case in test_cases:
         test_id = test_case["id"]
@@ -66,13 +70,24 @@ def evaluation(max_cases=MAX_CASES, baseline_accuracy=BASELINE_ACCURACY):
         num_run += 1
         correct_classification = answers_by_id[test_id]
 
-        if gemini_prediction["category"] == correct_classification["category"]:
+        expected_category = correct_classification["category"]
+        predicted_category = gemini_prediction["category"]
+        correct = predicted_category == expected_category
+
+        case_results.append({
+            "id": test_id,
+            "expected": expected_category,
+            "predicted": predicted_category,
+            "correct": correct,
+        })
+
+        if correct:
             num_correct += 1
         else:
             failures.append({
                 "id": test_id,
-                "expected": correct_classification["category"],
-                "predicted": gemini_prediction["category"],
+                "expected": expected_category,
+                "predicted": predicted_category,
             })
 
     accuracy = num_correct / num_run if num_run else 0
@@ -87,18 +102,46 @@ def evaluation(max_cases=MAX_CASES, baseline_accuracy=BASELINE_ACCURACY):
         "num_requested": len(test_cases),
         "regression": regression,
         "failures": failures,
+        "case_results": case_results,
     }
 
-def write_result_to_file(payload:json):
-    if(not payload):
-        return "nothing to write"
+
+def write_result_to_file(payload):
+    if not payload:
+        return {"saved": False, "reason": "empty_payload"}
 
     results_path = BASE_DIR / "data" / "json_for_results001.json"
-    with open(results_path,"w") as file:
-        json.dump(payload,file,indent=2)
-        
-    return results_path
-if __name__ == "__main__":
-    result = evaluation(MAX_CASES, BASELINE_ACCURACY)
-    write_result_to_file(result)    
+    with open(results_path, "w", encoding="utf-8") as file:
+        json.dump(payload, file, indent=2)
 
+    return {"saved": True, "path": str(results_path)}
+
+
+if __name__ == "__main__":
+    previous_run = load_latest_run(RUNS_DIR)
+    result = evaluation(MAX_CASES, BASELINE_ACCURACY)
+    comparison = compare_runs(
+        previous_run["payload"] if previous_run else None,
+        result,
+        WARNING_DROP_THRESHOLD,
+        CRITICAL_DROP_THRESHOLD,
+    )
+    result["status"] = comparison["status"]
+    result["regression"] = comparison["regression"]
+    result["comparison"] = {
+        "previous_run_path": previous_run["path"] if previous_run else None,
+        "regressed_cases": comparison["regressed_cases"],
+        "improved_cases": comparison["improved_cases"],
+    }
+
+    local_result = write_result_to_file(result)
+    run_history_result = save_timestamped_run(result, RUNS_DIR)
+    s3_result = upload_result_to_s3(result)
+    alert_result = send_slack_alert(result)
+    print(json.dumps({
+        "evaluation": result,
+        "local_result": local_result,
+        "run_history": run_history_result,
+        "s3_upload": s3_result,
+        "slack_alert": alert_result,
+    }, indent=2))
