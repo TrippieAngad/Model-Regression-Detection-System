@@ -12,6 +12,7 @@ on:
       - "tests/**"
       - "requirements.txt"
       - "Dockerfile"
+      - ".dockerignore"
       - ".github/workflows/eval.yml"
 
 jobs:
@@ -35,3 +36,6 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t model-regression-evaluator .
+
+      - name: Run tests in Docker
+        run: docker run --rm model-regression-evaluator python -m unittest discover -s tests
