@@ -30,7 +30,7 @@ SLACK_ALERT_STATUSES=warning,critical
 python app/eval_runner.py
 ```
 
-The script writes the latest JSON result to `data/json_for_results001.json`, saves a timestamped copy in `runs/`, compares the current run against the previous timestamped run, and then attempts to send a Slack alert. If `SLACK_WEBHOOK_URL` is missing, the evaluator still completes and reports that the Slack alert was skipped.
+The script writes the latest JSON result to `data/json_for_results001.json`, saves a timestamped copy in `runs/`, compares the current run against the previous timestamped run, generates an HTML report in `reports/`, and then attempts to send a Slack alert. If `SLACK_WEBHOOK_URL` is missing, the evaluator still completes and reports that the Slack alert was skipped.
 
 ### 4. Test the Slack alert helpers
 
@@ -93,3 +93,52 @@ Test the run-history helpers with:
 ```bash
 python -m unittest tests/test_run_history.py
 ```
+
+## HTML Reports
+
+Each eval run generates a human-readable report under:
+
+```text
+reports/eval_YYYY-MM-DD_HH-MM-SS.html
+```
+
+The report includes:
+
+- status and accuracy scorecard
+- previous run path
+- baseline accuracy and accuracy drop
+- regressed cases
+- improved cases
+- failed cases
+
+The Slack alert includes the local report path when a report is generated. Generated report files are ignored by git via `.gitignore`.
+
+Test the report generator with:
+
+```bash
+python -m unittest tests/test_report_generator.py
+```
+
+## Docker
+
+The evaluator can run inside a Docker container for repeatable local, CI, and cloud execution.
+
+### 1. Build the image
+
+```bash
+docker build -t model-regression-evaluator .
+```
+
+### 2. Run the test suite in the image
+
+```bash
+docker run --rm model-regression-evaluator python -m unittest discover -s tests
+```
+
+### 3. Run the evaluator
+
+```bash
+docker run --rm --env-file .env model-regression-evaluator
+```
+
+Running the evaluator container will call Gemini and may send Slack alerts or upload to S3 depending on the variables configured in `.env`.

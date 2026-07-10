@@ -26,6 +26,7 @@ def should_send_alert(result, alert_statuses=None):
 def format_slack_message(result, project_name="Model Regression Detection System"):
     regression = result.get("regression", {})
     comparison = result.get("comparison", {})
+    report = result.get("report", {})
     failures = result.get("failures", [])
     status = result.get("status", "unknown").upper()
     accuracy = result.get("accuracy_percent", "unknown")
@@ -44,6 +45,10 @@ def format_slack_message(result, project_name="Model Regression Detection System
 
     if delta is not None:
         lines.append(f"Accuracy drop from baseline: {delta * 100:.2f}%")
+
+    report_path = report.get("path")
+    if report_path:
+        lines.append(f"Report: {report_path}")
 
     regressed_cases = comparison.get("regressed_cases", [])
     if regressed_cases:

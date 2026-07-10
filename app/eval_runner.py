@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from customer_support_tool import email_classifier
+from report_generator import generate_html_report
 from run_history import compare_runs, load_latest_run, save_timestamped_run
 from s3_storage import upload_result_to_s3
 from slack_alerts import send_slack_alert
@@ -10,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEST_CASES = BASE_DIR / "data" / "test_cases_v1.json"
 ANSWERS = BASE_DIR / "data" / "answer_key_v1.json"
 RUNS_DIR = BASE_DIR / "runs"
+REPORTS_DIR = BASE_DIR / "reports"
 MAX_CASES = 52
 
 BASELINE_ACCURACY = None
@@ -136,12 +138,15 @@ if __name__ == "__main__":
 
     local_result = write_result_to_file(result)
     run_history_result = save_timestamped_run(result, RUNS_DIR)
+    report_result = generate_html_report(result, REPORTS_DIR)
+    result["report"] = report_result
     s3_result = upload_result_to_s3(result)
     alert_result = send_slack_alert(result)
     print(json.dumps({
         "evaluation": result,
         "local_result": local_result,
         "run_history": run_history_result,
+        "html_report": report_result,
         "s3_upload": s3_result,
         "slack_alert": alert_result,
     }, indent=2))

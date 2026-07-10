@@ -39,6 +39,9 @@ class SlackAlertsTest(unittest.TestCase):
                     {"id": "spam_004"},
                 ],
             },
+            "report": {
+                "path": "reports/eval_2026-07-09_14-30-05.html",
+            },
         }
 
         message = format_slack_message(result)
@@ -49,6 +52,7 @@ class SlackAlertsTest(unittest.TestCase):
         self.assertIn("edge_001", message)
         self.assertIn("billing_009", message)
         self.assertIn("spam_004", message)
+        self.assertIn("reports/eval_2026-07-09_14-30-05.html", message)
 
 
 if __name__ == "__main__":
